@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Me | Ốp điện thoại cá nhân hóa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink:#ef7190; --pink2:#d95376; --pink-light:#ffe8ee;
+  --purple:#8068d5; --purple-light:#eee9ff;
+  --yellow:#ffd66b; --blue:#73c9df;
+  --cream:#fff9f7; --dark:#29252b; --gray:#6d666d; --white:#fff;
+  --green:#68b88a; --shadow:0 16px 45px rgba(63,39,57,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:"Be Vietnam Pro",sans-serif;color:var(--dark);background:var(--cream);line-height:1.7}
+h1,h2,h3,h4{font-family:"Playfair Display",serif}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,249,247,.94);backdrop-filter:blur(14px);border-bottom:1px solid #f1dfe4}
+.navbar{max-width:1150px;height:72px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:800 30px "Playfair Display";color:var(--pink2)}
+.logo span{font-size:22px}
+.nav-links{display:flex;gap:27px;list-style:none}
+.nav-links a{font-size:13px;font-weight:700}
+.nav-links a:hover{color:var(--pink2)}
+.menu-btn{display:none;border:0;background:none;font-size:27px;cursor:pointer}
+section{padding:95px 20px;scroll-margin-top:72px}
+.container{max-width:1120px;margin:auto}
+.eyebrow{font-size:12px;font-weight:800;color:var(--pink2);text-transform:uppercase;letter-spacing:2px}
+.section-head{text-align:center;margin-bottom:45px}
+.section-head h2{font-size:42px;line-height:1.2;margin:7px 0 10px}
+.section-head p{max-width:650px;margin:auto;color:var(--gray)}
+.btn{display:inline-block;border:0;border-radius:50px;padding:13px 25px;font:700 14px "Be Vietnam Pro";cursor:pointer;transition:.25s}
+.btn-primary{background:var(--pink2);color:white;box-shadow:0 8px 22px rgba(217,83,118,.28)}
+.btn-primary:hover{transform:translateY(-3px)}
+.btn-light{background:white;color:var(--pink2);border:1px solid #f1ccd6}
+.btn-purple{background:var(--purple);color:white}
+.btn-yellow{background:var(--yellow);color:#473c18}
+
+.hero{min-height:100vh;padding-top:125px;display:flex;align-items:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(circle at 8% 20%,#ef71902b,transparent 25%),radial-gradient(circle at 92% 20%,#8068d52b,transparent 25%),radial-gradient(circle at 80% 90%,#73c9df26,transparent 25%),var(--cream)}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;z-index:0}
+.hero::before{width:190px;height:190px;background:var(--yellow);opacity:.35;right:5%;top:145px}
+.hero::after{width:110px;height:110px;background:var(--blue);opacity:.25;left:6%;bottom:85px}
+.hero-content{width:100%;position:relative;z-index:1}
+.hero-logo{width:min(215px,52vw);height:215px;object-fit:contain;margin:0 auto 8px;border-radius:30px}
+.hero h1{font-size:78px;line-height:1}
+.hero h1 span{color:var(--pink2)}
+.hero-tag{font-size:20px;color:var(--gray);margin:20px auto 28px}
+.hero-tag strong{color:var(--pink2)}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:28px 0}
+.pill{background:white;padding:8px 14px;border-radius:30px;font-size:12px;font-weight:700;box-shadow:0 6px 18px #442d4110}
+.hero-stars{font-size:28px;letter-spacing:15px;color:var(--pink);margin-top:30px}
+
+.stats{background:white;padding:28px 20px}
+.stats-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center}
+.stat strong{display:block;font-size:28px;color:var(--pink2)}
+.stat span{font-size:12px;color:var(--gray)}
+
+#dich-vu{background:white}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.card{background:white;border:1px solid #f0e2e6;border-radius:25px;overflow:hidden;box-shadow:0 8px 28px #462d3c0c;transition:.3s}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.card-img{width:100%;height:235px;object-fit:cover}
+.card-body{padding:24px}
+.card h3{font-size:25px}
+.card p{font-size:14px;color:var(--gray);min-height:76px;margin:8px 0}
+.price{font-size:23px;font-weight:800;color:var(--pink2);margin:15px 0}
+.card .btn{width:100%}
+
+#bo-suu-tap{background:#fff6f7}
+.gallery{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:220px 220px;gap:15px}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:22px;box-shadow:0 8px 25px #442d4112}
+.gallery img:first-child{grid-row:1/3}
+.gallery img:nth-child(2){grid-column:2/4}
+.gallery-caption{text-align:center;margin-top:20px;color:var(--gray);font-size:13px}
+
+#quy-trinh{background:white}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{text-align:center;padding:28px 18px;border-radius:22px;background:var(--cream);border:1px solid #f2dfe4;position:relative}
+.step-number{width:50px;height:50px;margin:0 auto 15px;border-radius:50%;background:var(--pink-light);color:var(--pink2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+.step h3{font-size:21px;margin-bottom:8px}
+.step p{font-size:13px;color:var(--gray)}
+
+#ve-chung-toi{background:linear-gradient(135deg,#fff9f7,#f4f0ff)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{width:100%;height:500px;object-fit:cover;border-radius:32px;box-shadow:var(--shadow)}
+.about h2{font-size:42px;line-height:1.2;margin:8px 0 20px}
+.about p{color:var(--gray);margin-bottom:15px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:23px}
+.feature{background:white;border-radius:15px;padding:14px;font-size:13px;font-weight:700;box-shadow:0 6px 20px #442d4110}
+
+#bang-gia{background:white}
+.price-table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:20px;box-shadow:var(--shadow);background:white}
+.price-table th,.price-table td{padding:17px;text-align:left;border-bottom:1px solid #f0e7e9;font-size:14px}
+.price-table th{background:var(--pink2);color:white}
+.price-table tr:last-child td{border-bottom:0}
+.price-table td:last-child{font-weight:800;color:var(--pink2)}
+
+#cam-nhan{background:#fff6f7}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.review{background:white;border-radius:23px;padding:25px;box-shadow:0 8px 25px #442d4110}
+.stars{color:#f2b92d;letter-spacing:3px;margin-bottom:12px}
+.review p{font-size:14px;color:var(--gray);font-style:italic}
+.customer{margin-top:16px;font-weight:800;font-size:13px}
+
+#faq{background:white}
+.faq{max-width:820px;margin:auto;display:grid;gap:12px}
+details{background:var(--cream);border:1px solid #f0dfe3;border-radius:16px;padding:17px 20px}
+summary{font-weight:800;cursor:pointer}
+details p{color:var(--gray);font-size:14px;margin-top:10px}
+
+#dat-hang{background:linear-gradient(135deg,#f8edf4,#eee9ff)}
+.order{max-width:820px;margin:auto;background:white;padding:40px;border-radius:30px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.full{grid-column:1/-1}
+label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid #e4dfe3;border-radius:12px;font:14px "Be Vietnam Pro";outline:0}
+input:focus,select:focus,textarea:focus{border-color:var(--pink)}
+textarea{min-height:115px;resize:vertical}
+.submit{width:100%;margin-top:5px;font-size:15px}
+.success{display:none;margin-top:15px;padding:13px;background:#e8f8ed;color:#23723d;border-radius:12px;text-align:center;font-size:14px;font-weight:700}
+
+footer{background:var(--dark);color:white;padding:45px 20px 22px}
+.footer{max-width:1120px;margin:auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}
+.footer-logo{font:800 31px "Playfair Display";color:#ff9eb4;margin-bottom:10px}
+footer h3{font-family:"Be Vietnam Pro";font-size:15px;margin-bottom:12px}
+footer p,footer a{color:#cbc4cb;font-size:13px}
+.footer-links{display:flex;flex-direction:column;gap:7px}
+.footer-links a:hover{color:#ff9eb4}
+.copyright{max-width:1120px;margin:28px auto 0;padding-top:18px;border-top:1px solid #ffffff18;text-align:center;color:#888;font-size:12px}
+
+@media(max-width:900px){
+.nav-links{position:absolute;top:72px;left:0;width:100%;background:var(--cream);display:block;max-height:0;overflow:hidden;transition:.3s}
+.nav-links.active{max-height:350px}.nav-links li{text-align:center;padding:11px}
+.menu-btn{display:block}.service-grid,.reviews{grid-template-columns:1fr;max-width:500px;margin:auto}
+.steps{grid-template-columns:1fr 1fr}.about{grid-template-columns:1fr}
+.footer{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+section{padding:75px 17px}.hero h1{font-size:58px}.hero-logo{height:180px}
+.stats-grid{grid-template-columns:1fr 1fr}.section-head h2,.about h2{font-size:33px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+.gallery img:first-child{grid-row:auto;grid-column:1/3}.gallery img:nth-child(2){grid-column:auto}
+.steps{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}
+.order{padding:25px 20px}.features{grid-template-columns:1fr}.footer{grid-template-columns:1fr}
+.price-table{font-size:12px}.price-table th,.price-table td{padding:12px 8px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<nav class="navbar">
+<a class="logo" href="#trang-chu">Case<span>♡</span>Me</a>
+<button class="menu-btn" id="menuBtn">☰</button>
+<ul class="nav-links" id="navLinks">
+<li><a href="#trang-chu">Trang chủ</a></li>
+<li><a href="#dich-vu">Dịch vụ</a></li>
+<li><a href="#bo-suu-tap">Bộ sưu tập</a></li>
+<li><a href="#quy-trinh">Quy trình</a></li>
+<li><a href="#ve-chung-toi">Về chúng tôi</a></li>
+<li><a href="#bang-gia">Bảng giá</a></li>
+<li><a href="#dat-hang">Đặt hàng</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero" id="trang-chu">
+<div class="hero-content">
+<img class="hero-logo" src="images/image-1.jpg" alt="Logo Case Me">
+<h1>Case <span>Me</span></h1>
+<p class="hero-tag"><strong>Ốp theo cá tính – Chất riêng của bạn!</strong><br>Thiết kế một chiếc ốp không chỉ để bảo vệ điện thoại, mà còn kể câu chuyện về chính bạn.</p>
+<a href="#dat-hang" class="btn btn-primary">Đặt ngay ♡</a>
+<div class="hero-pills">
+<span class="pill">🎨 Thiết kế cá nhân hóa</span>
+<span class="pill">🛡️ Bảo vệ điện thoại</span>
+<span class="pill">🎁 Quà tặng ý nghĩa</span>
+<span class="pill">🚚 Giao hàng nhanh</span>
+</div>
+<div class="hero-stars">♡ ✦ ♡ ✧ ♡</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="stats-grid">
+<div class="stat"><strong>49K+</strong><span>Giá từ</span></div>
+<div class="stat"><strong>3+</strong><span>Dòng sản phẩm</span></div>
+<div class="stat"><strong>100%</strong><span>Thiết kế theo yêu cầu</span></div>
+<div class="stat"><strong>24/7</strong><span>Tiếp nhận đơn online</span></div>
+</div>
+</section>
+
+<section id="dich-vu">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Dịch vụ</span><h2>Chọn phong cách của bạn</h2><p>Ba lựa chọn phù hợp với nhu cầu sử dụng, sở thích và ngân sách của sinh viên, người trẻ.</p></div>
+<div class="service-grid">
+<article class="card">
+<img class="card-img" src="images/image-2.jpg" alt="Ốp hồng cá tính">
+<div class="card-body"><h3>Basic – Mẫu có sẵn</h3><p>Những mẫu ốp xinh xắn, thời trang, dễ chọn và phù hợp sử dụng hằng ngày.</p><div class="price">49.000đ</div><button class="btn btn-primary choose" data-package="Basic">Chọn gói</button></div>
+</article>
+<article class="card">
+<img class="card-img" src="images/image-3.jpg" alt="Ốp đôi cá nhân hóa">
+<div class="card-body"><h3>Custom – Thiết kế riêng</h3><p>Thêm tên, hình ảnh, câu nói yêu thích hoặc ý tưởng riêng để tạo chiếc ốp độc nhất.</p><div class="price">79.000đ</div><button class="btn btn-purple choose" data-package="Custom">Chọn gói</button></div>
+</article>
+<article class="card">
+<img class="card-img" src="images/image-4.jpg" alt="Ốp hình thú">
+<div class="card-body"><h3>Couple & Gift</h3><p>Ốp đôi dành cho người yêu, bạn thân hoặc bộ quà tặng trong những dịp đặc biệt.</p><div class="price">149.000đ/cặp</div><button class="btn btn-yellow choose" data-package="Couple & Gift">Chọn gói</button></div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="bo-suu-tap">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Bộ sưu tập</span><h2>Gợi ý mẫu ốp nổi bật</h2><p>Từ phong cách nữ tính, đáng yêu đến tối giản và cá tính – bạn có thể chọn mẫu hoặc yêu cầu thiết kế mới.</p></div>
+<div class="gallery">
+<img src="images/image-5.jpg" alt="Ốp hồng họa tiết">
+<img src="images/image-6.jpg" alt="Ốp đôi">
+<img src="images/image-7.jpg" alt="Ốp mèo đáng yêu">
+<img src="images/image-8.jpg" alt="Ốp đen tối giản">
+</div>
+<p class="gallery-caption">💗 Bạn thích mẫu nào? Hãy ghi chú ý tưởng trong form đặt hàng để Case Me tư vấn.</p>
+</div>
+</section>
+
+<section id="quy-trinh">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Quy trình</span><h2>Đặt ốp chỉ với 4 bước</h2><p>Đơn giản, nhanh chóng và dễ thực hiện ngay trên website.</p></div>
+<div class="steps">
+<div class="step"><div class="step-number">01</div><h3>Chọn gói</h3><p>Chọn mẫu có sẵn, thiết kế riêng hoặc ốp đôi/quà tặng.</p></div>
+<div class="step"><div class="step-number">02</div><h3>Gửi yêu cầu</h3><p>Điền họ tên, số điện thoại và ghi chú về mẫu máy, màu sắc, hình ảnh.</p></div>
+<div class="step"><div class="step-number">03</div><h3>Xác nhận</h3><p>Case Me liên hệ để xác nhận thông tin, thiết kế và chi phí đơn hàng.</p></div>
+<div class="step"><div class="step-number">04</div><h3>Nhận hàng</h3><p>Đơn được hoàn thiện và giao đến địa chỉ của bạn.</p></div>
+</div>
+</div>
+</section>
+
+<section id="ve-chung-toi">
+<div class="container about">
+<img class="about-img" src="images/image-9.jpg" alt="Ốp điện thoại Case Me màu đen">
+<div>
+<span class="eyebrow">Về Case Me</span>
+<h2>Mỗi chiếc ốp,<br>một câu chuyện riêng.</h2>
+<p>Case Me là thương hiệu ốp điện thoại cá nhân hóa hướng đến học sinh, sinh viên và người trẻ yêu thích sự sáng tạo.</p>
+<p>Thay vì chọn một chiếc ốp giống hàng nghìn người khác, bạn có thể tự chọn màu sắc, hình ảnh, tên hoặc thông điệp để tạo ra một sản phẩm mang dấu ấn cá nhân.</p>
+<p>Với định hướng trẻ trung, dễ tiếp cận và giá phù hợp, Case Me mong muốn biến chiếc điện thoại hằng ngày thành một món phụ kiện thể hiện cá tính.</p>
+<div class="features">
+<div class="feature">🛡️ Chất liệu chống sốc</div>
+<div class="feature">🎨 Mẫu mã đa dạng</div>
+<div class="feature">✏️ Thiết kế theo yêu cầu</div>
+<div class="feature">🎁 Phù hợp làm quà</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="bang-gia">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Bảng giá</span><h2>Giá rõ ràng – Dễ lựa chọn</h2><p>Mức giá tham khảo dành cho website bán hàng mẫu của sinh viên.</p></div>
+<table class="price-table">
+<thead><tr><th>Gói</th><th>Nội dung</th><th>Phù hợp</th><th>Giá</th></tr></thead>
+<tbody>
+<tr><td><strong>Basic</strong></td><td>Ốp mẫu có sẵn</td><td>Dùng hằng ngày</td><td>49.000đ</td></tr>
+<tr><td><strong>Custom</strong></td><td>Thiết kế theo yêu cầu</td><td>Cá nhân hóa</td><td>79.000đ</td></tr>
+<tr><td><strong>Couple & Gift</strong></td><td>2 ốp thiết kế theo cặp</td><td>Người yêu / bạn thân</td><td>149.000đ/cặp</td></tr>
+<tr><td><strong>Thêm ảnh</strong></td><td>In thêm ảnh hoặc chữ</td><td>Đơn Custom</td><td>+10.000đ</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="cam-nhan">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Khách hàng</span><h2>Mọi người nói gì về Case Me?</h2><p>Một vài phản hồi mẫu có thể sử dụng để minh họa cho website.</p></div>
+<div class="reviews">
+<div class="review"><div class="stars">★★★★★</div><p>“Ốp ngoài đời xinh hơn mình nghĩ, màu dễ thương và hình in khá nổi bật. Giá cũng hợp với sinh viên.”</p><div class="customer">— Minh Anh, Bình Dương</div></div>
+<div class="review"><div class="stars">★★★★★</div><p>“Mình đặt ốp Custom có tên và hình riêng. Nhân viên tư vấn dễ hiểu, thành phẩm nhìn rất đúng ý.”</p><div class="customer">— Khánh Linh, Thủ Dầu Một</div></div>
+<div class="review"><div class="stars">★★★★★</div><p>“Đặt một cặp ốp làm quà sinh nhật cho bạn thân. Thiết kế đơn giản nhưng nhìn rất có ý nghĩa.”</p><div class="customer">— Hoàng Nam, Bình Dương</div></div>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="container">
+<div class="section-head"><span class="eyebrow">FAQ</span><h2>Câu hỏi thường gặp</h2><p>Một số thông tin giúp bạn đặt hàng nhanh hơn.</p></div>
+<div class="faq">
+<details><summary>Case Me có nhận thiết kế theo ảnh riêng không?</summary><p>Có. Với gói Custom, bạn có thể ghi chú mong muốn và gửi hình ảnh tham khảo khi được liên hệ xác nhận đơn.</p></details>
+<details><summary>Có cần biết chính xác mẫu điện thoại không?</summary><p>Có. Bạn nên ghi rõ tên dòng máy để Case Me tư vấn đúng loại ốp tương thích.</p></details>
+<details><summary>Thời gian hoàn thiện đơn Custom bao lâu?</summary><p>Thời gian phụ thuộc vào mẫu thiết kế và số lượng đơn. Website có thể dùng nội dung mẫu “dự kiến 2–4 ngày” để minh họa.</p></details>
+<details><summary>Có thể đặt ốp làm quà tặng không?</summary><p>Có. Gói Couple & Gift phù hợp cho sinh nhật, kỷ niệm, quà cho bạn thân hoặc người yêu.</p></details>
+<details><summary>Làm sao để đặt hàng?</summary><p>Chọn gói dịch vụ, kéo xuống phần Đặt hàng, điền thông tin và bấm “Gửi yêu cầu đặt hàng”.</p></details>
+</div>
+</div>
+</section>
+
+<section id="dat-hang">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Đặt hàng</span><h2>Thiết kế chiếc ốp của bạn</h2><p>Điền thông tin bên dưới. Đây là form mô phỏng đặt hàng cho website.</p></div>
+<div class="order">
+<form id="orderForm">
+<div class="form-grid">
+<div><label for="name">Họ tên *</label><input id="name" required placeholder="Nhập họ tên của bạn"></div>
+<div><label for="phone">Số điện thoại *</label><input id="phone" required pattern="[0-9]{9,11}" placeholder="0901234567"></div>
+<div><label for="model">Mẫu điện thoại *</label><input id="model" required placeholder="Ví dụ: iPhone 15 Pro"></div>
+<div><label for="color">Màu sắc mong muốn</label><input id="color" placeholder="Hồng, đen, trong suốt..."></div>
+<div class="full"><label for="package">Gói dịch vụ *</label>
+<select id="package" required><option value="">-- Chọn gói dịch vụ --</option><option value="Basic">Basic - 49.000đ</option><option value="Custom">Custom - 79.000đ</option><option value="Couple & Gift">Couple & Gift - 149.000đ/cặp</option></select></div>
+<div class="full"><label for="note">Ghi chú / ý tưởng thiết kế</label><textarea id="note" placeholder="Tên muốn in, hình ảnh, câu quote, phong cách, yêu cầu đặc biệt..."></textarea></div>
+<div class="full"><label for="address">Địa chỉ nhận hàng</label><input id="address" placeholder="Nhập địa chỉ nhận hàng"></div>
+</div>
+<button class="btn btn-primary submit" type="submit">Gửi yêu cầu đặt hàng ♡</button>
+<div class="success" id="success">🎉 Cảm ơn bạn! Case Me đã nhận được yêu cầu. Chúng mình sẽ liên hệ để xác nhận đơn hàng.</div>
+</form>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="footer">
+<div><div class="footer-logo">Case Me ♡</div><p>Ốp theo cá tính – Chất riêng của bạn!</p><p style="margin-top:7px">Ốp điện thoại cá nhân hóa dành cho người trẻ.</p></div>
+<div><h3>Khám phá</h3><div class="footer-links"><a href="#dich-vu">Dịch vụ</a><a href="#bo-suu-tap">Bộ sưu tập</a><a href="#quy-trinh">Quy trình</a><a href="#bang-gia">Bảng giá</a></div></div>
+<div><h3>Liên hệ</h3><div class="footer-links"><a href="tel:0901234567">📞 0901 234 567</a><a href="#">💬 Zalo: Case Me</a><a href="#">📘 Facebook: Case Me</a></div></div>
+<div><h3>Địa chỉ</h3><div class="footer-links"><p>📍 Thủ Dầu Một, Bình Dương</p><p>🕘 Thứ 2 – Chủ nhật</p><p>⏰ 08:00 – 21:00</p></div></div>
+</div>
+<div class="copyright">© 2026 Case Me. Website bán ốp điện thoại cá nhân hóa – Bản demo học tập.</div>
+</footer>
+
+<script>
+const menuBtn=document.getElementById("menuBtn");
+const nav=document.getElementById("navLinks");
+menuBtn.addEventListener("click",()=>nav.classList.toggle("active"));
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("active")));
+
+const select=document.getElementById("package");
+document.querySelectorAll(".choose").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    select.value=btn.dataset.package;
+    document.getElementById("dat-hang").scrollIntoView({behavior:"smooth"});
+  });
+});
+
+document.getElementById("orderForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  document.getElementById("success").style.display="block";
+  this.reset();
+});
+</script>
+</body>
+</html>
